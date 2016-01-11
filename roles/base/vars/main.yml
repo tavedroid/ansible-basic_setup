@@ -1,0 +1,18 @@
+---
+date: $PIPE(date +%s)
+
+pkg_list:
+  - zsh
+  - python-pip
+  - bpython
+  - "@Development tools"
+  - git
+  - git-core
+pip_list:
+  - markdown
+  - commando
+  - argparse
+  - pyyaml
+  - pygments
+  - smartypants
+  - hyde

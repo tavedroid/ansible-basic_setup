@@ -1,0 +1,13 @@
+---
+- name: Clone oh-my-zsh repo
+  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ user }}/.oh-my-zsh
+  sudo: yes
+  sudo_user: "{{ user }}"
+
+- name: deploy .zshrc
+  template: src=zshrc.in.j2 dest=/home/{{ user }}/.zshrc owner={{ user }}
+  sudo: yes
+  sudo_user: "{{ user }}"
+
+- name: Set zsh as default shell
+  user: name={{ user }} shell=/bin/zsh

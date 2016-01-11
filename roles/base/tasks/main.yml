@@ -1,0 +1,23 @@
+---
+- name: Create a my account
+  user: name="{{ user }}" comment="self" createhome=yes
+
+- name: Name for authorized_key module.
+  sudo: yes
+  authorized_key: user={{ user }}  key="{{ item }}" manage_dir=yes
+  with_file: public_keys/pub.keys
+
+- name: Create admins group
+  group: name=admins system=yes state=present
+
+- name: Install Epel repo
+  yum: name="epel-release" state=present
+
+- name: Install packages
+  yum: name="{{ item }}" state=present
+  with_items: pkg_list
+
+- name: Name for pip module
+  pip: name="{{ item }}" state=present 
+  with_items: pip_list
+

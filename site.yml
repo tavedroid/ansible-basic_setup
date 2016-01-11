@@ -1,0 +1,6 @@
+---
+- hosts: all 
+  roles:
+    - base 
+    - oh-my-zsh
+    - jorti.fail2ban
